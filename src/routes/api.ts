@@ -19,7 +19,7 @@ const upload = multer({
 
     cb(null, allowed.includes(file.mimetype));
   },
-  limits: { fieldSize: 8000 }
+  limits: { fieldSize: 8000000 }
 })
 
 const router = Router();
@@ -42,6 +42,6 @@ router.put('/frase/:id', ApiController.updatePhrase);
 
 router.delete('/frase/:id', ApiController.deletePhrase);
 
-router.post('/upload', upload.fields([{name: 'avatar', maxCount: 1}]), ApiController.uploadFile);
+router.post('/upload', upload.single('avatar'), ApiController.uploadFile);
 
 export default router;
