@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { request } from 'http';
 import { Sequelize } from 'sequelize';
 import { Phrase } from '../models/Phrase';
 
@@ -85,4 +86,9 @@ export const randomPhrase = async (req: Request, res: Response) => {
   } else {
     res.status(404).json({ error: 'Phrase not found' });
   }
+}
+
+export const uploadFile = async (req: Request, res: Response) => {
+
+  res.json({ message: 'File uploaded'});
 }
